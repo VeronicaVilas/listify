@@ -1,4 +1,9 @@
-<p>list works!</p>
+
+<div>
+  <h3>Descubra a facilidade de fazer compras</h3>
+  <p>Inicie sua experiência de compras agora: clique no botão abaixo para adicionar itens à sua lista de forma rápida e descomplicada!</p>
+  <a [routerLink]="['/create-product']">Adicionar Produtos</a>
+</div>
 
 <ul>
   @for (product of products; track product.id) {
