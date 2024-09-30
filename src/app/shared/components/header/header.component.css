@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
+
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #F26671;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.menu-button {
+  margin-right: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: "Passion One", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #1F1F1F;
+}
+
+.logo mat-icon {
+  margin-right: 0.8rem;
+  font-size: 1.6rem;
+}
+
