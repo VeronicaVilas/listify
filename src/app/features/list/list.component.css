@@ -63,3 +63,19 @@
   margin: 20px 0;
 }
 
+.list-title {
+  margin: 2rem 0.8rem;
+  margin-bottom: -1rem;
+  font-weight: bold;
+}
+
+.status-button {
+  display: flex;
+  gap: 10px;
+  margin: 2rem 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.status-button .purchased-button {
+  background-color: #0AA65D;
+}

@@ -20,6 +20,13 @@
 }
 </div>
 
+<h6 class="list-title">Confira os produtos que você adicionou à sua lista!</h6>
+
+<div class="status-button">
+  <button mat-flat-button class="purchased-button">Comprados</button>
+  <button mat-flat-button color="warn" class="button-nao-comprados">Não Comprados</button>
+</div>
+
 @for (product of products; track product.id) {
   <app-card [product]="product"></app-card>
 }
