@@ -14,6 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 export class CardComponent {
   product = input.required<Product>();
 
+  productImage = computed(() => this.product().image);
   productTitle = computed(() => this.product().title);
-  productListName = computed(() => this.product().category);
+  productCategory = computed(() => this.product().category);
+  productAmount = computed(() => this.product().amount);
+  productStatus = computed(() => this.product().status);
+  productIcon = computed(() => this.product().icon);
 }
