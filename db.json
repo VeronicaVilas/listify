@@ -1,13 +1,12 @@
 {
   "products": [
     {
-      "id": "5937",
       "image": "",
       "title": "Vestido",
       "category": "Roupa",
       "amount": 4,
       "status": "Não Comprado",
-      "icon": "🍉"
+      "id": "5937"
     },
     {
       "id": "6373",
@@ -125,6 +124,14 @@
       "amount": 0,
       "status": "Não Comprado",
       "icon": "❓"
+    },
+    {
+      "id": "9a5a",
+      "image": "",
+      "title": "saia",
+      "category": "",
+      "amount": 0,
+      "status": "Não Comprado"
     }
   ]
 }

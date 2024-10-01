@@ -35,7 +35,7 @@
         <th>Imagem</th>
         <th>Nome</th>
         <th>Categoria</th>
-        <th>Preço</th>
+        <th>Quantidade</th>
         <th>Status</th>
         <th>Ações</th>
       </tr>
@@ -50,7 +50,7 @@
           <td>{{ product.amount }}</td>
           <td><mat-chip>{{product.status}}</mat-chip>
           <td>
-            <button mat-icon-button class="edit-button" (click)="onEdit()">
+            <button mat-icon-button class="edit-button" (click)="onEdit(product)">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button color="warn">

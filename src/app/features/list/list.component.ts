@@ -28,16 +28,19 @@ export class ListComponent {
 
   readonly dialog = inject(MatDialog);
 
+  router = inject(Router)
+
   ngOnInit() {
     this.productsService.getAll().subscribe((products) => {
       this.products = products;
     });
   }
 
-  onEdit() {
-    const dialogRef = this.dialog.open(EditComponent);
+  onEdit(product: Product) {
+    const dialogRef = this.dialog.open(EditComponent, {
+        data: product, // Passa o produto completo
+    });
   }
-
 
   openCreateProduct() {
     const dialogRef = this.dialog.open(CreateComponent);
