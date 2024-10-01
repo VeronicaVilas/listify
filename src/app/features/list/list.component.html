@@ -27,6 +27,40 @@
   <button mat-flat-button color="warn" class="button-nao-comprados">Não Comprados</button>
 </div>
 
-@for (product of products; track product.id) {
-  <app-card [product]="product"></app-card>
-}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Imagem</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track product.id) {
+        <tr>
+          <td><p><mat-slide-toggle></mat-slide-toggle></p></td>
+          <td class="img-table"><img mat-card-sm-image src="{{ product.image }}" ></td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.amount }}</td>
+          <td><mat-chip>{{product.status}}</mat-chip>
+          <td>
+            <button mat-icon-button class="edit-button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+
+
