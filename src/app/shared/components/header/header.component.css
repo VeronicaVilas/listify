@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
-  background-color: #F26671;
+  background-color: #2C2C2C;
   border-radius: 20px;
   width: 98%;
   margin: 0.8rem;
@@ -20,7 +20,7 @@
   font-family: "Passion One", sans-serif;
   font-weight: bold;
   font-size: 2rem;
-  color: #1F1F1F;
+  color: #F2F2F2;
 }
 
 .logo mat-icon {
