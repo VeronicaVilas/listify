@@ -13,34 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditComponent } from '../edit/edit.component';
 import { filter } from 'rxjs';
-
-@Component({
-  selector: 'app-confirmation-dialog',
-  template:
-  `
-    <h2 mat-dialog-title>Deletar produto</h2>
-      <mat-dialog-content>
-        Tem certeza que quer deletar este produto?
-      </mat-dialog-content>
-      <mat-dialog-actions>
-        <button mat-button (click)="onNo()">Não</button>
-        <button mat-raised-button color="accent" (click)="onYes()" cdkFocusInitial>Sim</button>
-    </mat-dialog-actions>
-  `,
-  standalone: true,
-  imports: [MatButtonModule, MatDialogModule],
-})
-export class ConfirmationDialogComponent {
-  matDialogRef = inject(MatDialogRef);
-
-  onNo() {
-    this.matDialogRef.close(false);
-  }
-
-  onYes() {
-    this.matDialogRef.close(true);
-  }
-}
+import { ConfirmationDialogService } from '../../shared/services/confirmation-dialog.service';
 
 @Component({
   selector: 'app-list',
@@ -52,10 +25,10 @@ export class ConfirmationDialogComponent {
 export class ListComponent {
 
   products: Product[] = [];
-
   productsService = inject(ProductsService);
-
   readonly dialog = inject(MatDialog);
+  confirmationDialogService = inject(ConfirmationDialogService);
+
 
   router = inject(Router)
 
@@ -76,15 +49,16 @@ export class ListComponent {
   }
 
   onDelete(product: Product) {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent)
-      .afterClosed()
-      .pipe(filter((answer) => answer === true))
-      .subscribe(() => {
-        this.productsService.delete(product.id).subscribe(() => {
+    this.confirmationDialogService
+    .openDialog()
+    .pipe(filter((answer) => answer === true))
+    .subscribe(() => {
+      this.productsService.delete(product.id)
+        .subscribe(() => {
           this.productsService.getAll().subscribe((products) => {
             this.products = products;
           });
         });
-      });
+    });
   }
 }
