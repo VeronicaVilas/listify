@@ -5,5 +5,4 @@ export interface Product {
   category: string,
   amount: number,
   status: string,
-  icon: string
 }
