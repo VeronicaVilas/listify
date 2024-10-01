@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ProductsService } from '../../shared/services/products.service';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create',
@@ -17,6 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 export class CreateComponent {
 
   productsService = inject(ProductsService);
+
+  matSnackBar = inject(MatSnackBar)
 
   form = new FormGroup({
     image: new FormControl<string>("", {
@@ -52,7 +55,14 @@ export class CreateComponent {
       icon: this.form.controls.icon.value,
     })
     .subscribe(() => {
-      alert('Sucesso!');
+      this.matSnackBar.open('Produto criado com sucesso!', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+    });
+    setTimeout(() => {
+      window.location.reload();
     });
   }
 }
