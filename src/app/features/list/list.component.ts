@@ -1,7 +1,7 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, EventEmitter, inject, input, Output } from '@angular/core';
 import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/interfaces/product.interface';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CreateComponent } from '../create/create.component';
@@ -11,6 +11,7 @@ import { CategoryCardsComponent } from './components/category-cards/category-car
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-list',
@@ -25,13 +26,18 @@ export class ListComponent {
 
   productsService = inject(ProductsService);
 
+  readonly dialog = inject(MatDialog);
+
   ngOnInit() {
     this.productsService.getAll().subscribe((products) => {
       this.products = products;
     });
   }
 
-  readonly dialog = inject(MatDialog);
+  onEdit() {
+    const dialogRef = this.dialog.open(EditComponent);
+  }
+
 
   openCreateProduct() {
     const dialogRef = this.dialog.open(CreateComponent);

@@ -50,7 +50,7 @@
           <td>{{ product.amount }}</td>
           <td><mat-chip>{{product.status}}</mat-chip>
           <td>
-            <button mat-icon-button class="edit-button">
+            <button mat-icon-button class="edit-button" (click)="onEdit()">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button color="warn">
