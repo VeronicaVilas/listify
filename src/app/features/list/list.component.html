@@ -1,9 +1,18 @@
-
-<div>
-  <h3>Descubra a facilidade de fazer compras</h3>
-  <p>Inicie sua experiência de compras agora: clique no botão abaixo para adicionar itens à sua lista de forma rápida e descomplicada!</p>
-  <a [routerLink]="['/create-product']">Adicionar Produtos</a>
-</div>
+<mat-card class="banner-card">
+  <div class="banner-content">
+    <div class="banner-text">
+      <h3>Descubra a facilidade de fazer compras</h3>
+      <p>Inicie sua experiência de compras agora: clique no botão abaixo para adicionar itens à sua lista de forma rápida e descomplicada!</p>
+      <button mat-fab extended class="add-button" (click)="openCreateProduct()">
+        <mat-icon>add</mat-icon>
+          Adicionar Produtos
+      </button>
+    </div>
+    <div class="banner-image">
+      <img src="images/listify-background.png" alt="Grocery Bag" />
+    </div>
+  </div>
+</mat-card>
 
 <ul>
   @for (product of products; track product.id) {

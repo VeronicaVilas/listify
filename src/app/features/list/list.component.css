@@ -1,0 +1,53 @@
+.banner-card {
+  background-color: #F26671;
+  padding: 50px;
+  border-radius: 20px;
+  margin: 2rem 0.8rem 0rem;
+  width: 100%;
+  max-width: 1315px;
+  height: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.banner-text {
+  width: 45%;
+}
+
+.banner-text h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.banner-text p {
+  font-size: 1.0rem;
+  margin: 10px 0;
+}
+
+.banner-image {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.banner-image img {
+  max-width: 120%;
+  height: auto;
+  object-fit: contain;
+}
+
+.add-button {
+  background-color: #FAE7E9;
+  color: #1F1F1F;
+  margin-top: 1rem;
+}
