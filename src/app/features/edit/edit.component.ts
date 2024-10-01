@@ -20,11 +20,9 @@ export class EditComponent {
   productsService = inject(ProductsService);
   matSnackBar = inject(MatSnackBar);
 
-  // Declare a variável form
   form: FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Product) {
-    // Inicializando o formulário
     this.form = new FormGroup({
       image: new FormControl<string>(data.image, {
         nonNullable: true,
@@ -49,7 +47,7 @@ export class EditComponent {
 
   onSubmit() {
     this.productsService.put(this.data.id, {
-      image: this.form.controls['image'].value, // Acesso com notação de colchetes
+      image: this.form.controls['image'].value,
       title: this.form.controls['title'].value,
       category: this.form.controls['category'].value,
       amount: this.form.controls['amount'].value,
