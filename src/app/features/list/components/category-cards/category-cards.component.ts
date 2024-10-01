@@ -16,6 +16,5 @@ export class CategoryCardsComponent {
   product = input.required<Product>();
 
   productCategory = computed(() => this.product().category);
-  productIcon = computed(() => this.product().icon);
 
 }
