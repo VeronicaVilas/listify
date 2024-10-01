@@ -1,0 +1,40 @@
+.list-name-card {
+  background-color: #E5191C;
+  width: 200px;
+  padding: 20px;
+  margin: 0.8rem;
+}
+
+.title-card {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Botão para Comprados (Verde) */
+.button-comprados {
+  background-color: #4CAF50; /* Cor verde */
+  color: white; /* Cor do texto */
+  border-color: #4CAF50; /* Cor da borda */
+}
+
+/* Botão para Não Comprados (Vermelho) */
+.button-nao-comprados {
+  background-color: #F44336; /* Cor vermelha */
+  color: white; /* Cor do texto */
+  border-color: #F44336; /* Cor da borda */
+}
+
+/* Remove o hover padrão de mat-stroked-button */
+button.mat-stroked-button:hover {
+  background-color: initial;
+}
+
+/* Personalizando hover para os botões */
+.button-comprados:hover {
+  background-color: #45A049; /* Cor verde um pouco mais escura no hover */
+}
+
+.button-nao-comprados:hover {
+  background-color: #E53935; /* Cor vermelha um pouco mais escura no hover */
+}
+

@@ -7,6 +7,32 @@
 <button mat-stroked-button class="button-comprados">Comprados</button>
 <button mat-stroked-button class="button-nao-comprados">Não Comprados</button>
 
-<li>
-  {{ productTitle() }}
-</li>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Categoria</th>
+      <th>Quantidade</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>{{ productTitle() }}</td>
+      <td>mercado</td>
+      <td>2</td>
+      <td>Não comprado</td>
+      <td>
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
