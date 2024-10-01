@@ -1,4 +1,11 @@
-<p>card works!</p>
+<mat-card class="list-name-card">
+  <mat-card-header>
+    <mat-card-title class="title-card">{{ productListName() }}</mat-card-title>
+  </mat-card-header>
+</mat-card>
+
+<button mat-stroked-button class="button-comprados">Comprados</button>
+<button mat-stroked-button class="button-nao-comprados">Não Comprados</button>
 
 <li>
   {{ productTitle() }}
