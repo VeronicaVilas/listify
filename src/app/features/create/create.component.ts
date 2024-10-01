@@ -40,9 +40,6 @@ export class CreateComponent {
     status: new FormControl<string>("Não Comprado", {
       nonNullable: true,
     }),
-    icon: new FormControl<string>("❓", {
-      nonNullable: true,
-    }),
   })
 
   onSubmit() {
@@ -52,7 +49,6 @@ export class CreateComponent {
       category: this.form.controls.category.value,
       amount: this.form.controls.amount.value,
       status: this.form.controls.status.value,
-      icon: this.form.controls.icon.value,
     })
     .subscribe(() => {
       this.matSnackBar.open('Produto criado com sucesso!', 'Ok', {
