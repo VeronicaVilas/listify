@@ -4,11 +4,16 @@ import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/interfaces/product.interface';
 import { CardComponent } from './components/card/card.component';
 import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CreateComponent } from '../create/create.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardComponent, RouterLink],
+  imports: [CardComponent, RouterLink, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
@@ -22,5 +27,11 @@ export class ListComponent {
     this.productsService.getAll().subscribe((products) => {
       this.products = products;
     });
+  }
+
+  readonly dialog = inject(MatDialog);
+
+  openCreateProduct() {
+    const dialogRef = this.dialog.open(CreateComponent);
   }
 }
