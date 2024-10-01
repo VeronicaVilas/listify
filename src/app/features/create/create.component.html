@@ -1,1 +1,31 @@
-<p>create works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div mat-dialog-title>
+    <h3>Formulário</h3>
+  </div>
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Imagem do produto</mat-label>
+        <input type="text" matInput formControlName="image" placeholder="URL da imagem">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input type="text" matInput formControlName="title" placeholder="Nome do produto">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <input type="text" matInput formControlName="category" placeholder="Ex. Mercado">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input type="number" matInput formControlName="amount" placeholder="0">
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Fechar</button>
+    <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
+  </div>
+</form>
