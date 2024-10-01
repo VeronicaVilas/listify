@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ProductsService } from '../../shared/services/products.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { merge } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-create',
@@ -35,30 +37,32 @@ export class CreateComponent {
     }),
     amount: new FormControl<number>(0, {
       nonNullable: true,
-      validators: Validators.required,
+      validators: [Validators.required, Validators.min(1)],
     }),
     status: new FormControl<string>("Não Comprado", {
       nonNullable: true,
     }),
-  })
+  });
 
   onSubmit() {
-    this.productsService. post({
-      image: this.form.controls.image.value,
-      title: this.form.controls.title.value,
-      category: this.form.controls.category.value,
-      amount: this.form.controls.amount.value,
-      status: this.form.controls.status.value,
-    })
-    .subscribe(() => {
-      this.matSnackBar.open('Produto criado com sucesso!', 'Ok', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top'
+    if (this.form.valid) {
+      this.productsService.post({
+        image: this.form.controls.image.value,
+        title: this.form.controls.title.value,
+        category: this.form.controls.category.value,
+        amount: this.form.controls.amount.value,
+        status: this.form.controls.status.value,
+      }).subscribe(() => {
+        this.matSnackBar.open('Produto criado com sucesso!', 'Ok', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
       });
-    });
-    setTimeout(() => {
-      window.location.reload();
-    });
+
+      setTimeout(() => {
+        window.location.reload();
+      });
+    }
   }
 }

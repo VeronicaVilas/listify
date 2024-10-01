@@ -8,24 +8,64 @@
         <mat-label>Imagem do produto</mat-label>
         <input type="text" matInput formControlName="image" placeholder="URL da imagem">
       </mat-form-field>
-      <mat-form-field>
+
+      <mat-form-field hintLabel="O nome é obrigatório.">
         <mat-label>Nome</mat-label>
-        <input type="text" matInput formControlName="title" placeholder="Nome do produto">
+        <input
+          type="text"
+          matInput
+          formControlName="title"
+          placeholder="Nome do produto"
+        />
+        <mat-error *ngIf="form.get('title')?.hasError('required') && form.get('title')?.touched">
+          O nome é obrigatório.
+        </mat-error>
       </mat-form-field>
     </div>
+
     <div class="row">
-      <mat-form-field>
+      <mat-form-field class="select" hintLabel="A categoria é obrigatória.">
         <mat-label>Categoria</mat-label>
-        <input type="text" matInput formControlName="category" placeholder="Ex. Mercado">
+        <mat-select formControlName="category">
+          <mat-option value="Alimentos e Bebidas">Alimentos e Bebidas</mat-option>
+          <mat-option value="Eletrônicos">Eletrônicos</mat-option>
+          <mat-option value="Vestuário">Vestuário</mat-option>
+          <mat-option value="Beleza e Cuidados Pessoais">Beleza e Cuidados Pessoais</mat-option>
+          <mat-option value="Outros">Outros</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('category')?.hasError('required') && form.get('category')?.touched">
+          A categoria é obrigatória.
+        </mat-error>
       </mat-form-field>
-      <mat-form-field>
+
+      <mat-form-field hintLabel="O Mínimo é 1.">
         <mat-label>Quantidade</mat-label>
-        <input type="number" matInput formControlName="amount" placeholder="0">
+        <input
+          #input
+          type="number"
+          matInput
+          formControlName="amount"
+          placeholder="0"
+          minlength="1"
+        />
+        <mat-error *ngIf="form.get('amount')?.hasError('required') && form.get('amount')?.touched">
+        </mat-error>
+        <mat-error *ngIf="form.get('amount')?.hasError('min') && form.get('amount')?.touched">
+          A quantidade deve ser maior que 0.
+        </mat-error>
       </mat-form-field>
     </div>
   </div>
+
   <div mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Fechar</button>
-    <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
+    <button
+      type="submit"
+      mat-button
+      [disabled]="form.invalid"
+      cdkFocusInitial
+    >
+      Salvar
+    </button>
   </div>
 </form>

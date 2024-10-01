@@ -1,11 +1,19 @@
 {
   "products": [
     {
-      "id": "4f28",
-      "image": "",
+      "id": "8d78",
+      "image": "https://i.pinimg.com/736x/d3/82/6a/d3826a943b0d3a9d54ec3d3cba01d0ef.jpg",
       "title": "",
       "category": "",
       "amount": 0,
+      "status": "Não Comprado"
+    },
+    {
+      "id": "4d16",
+      "image": "",
+      "title": "Roupa",
+      "category": "Eletrônicos",
+      "amount": 1,
       "status": "Não Comprado"
     }
   ]
