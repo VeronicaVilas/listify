@@ -42,22 +42,29 @@
     </thead>
     <tbody>
       @for (product of products; track product.id) {
-        <tr>
-          <td><p><mat-slide-toggle></mat-slide-toggle></p></td>
-          <td class="img-table"><img mat-card-sm-image src="{{ product.image }}" ></td>
-          <td>{{ product.title }}</td>
-          <td>{{ product.category }}</td>
-          <td>{{ product.amount }}</td>
-          <td><mat-chip>{{product.status}}</mat-chip>
-          <td>
-            <button mat-icon-button class="edit-button" (click)="onEdit(product)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="onDelete(product)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </tr>
+        @defer (on immediate) {
+          <tr>
+            <td><p><mat-slide-toggle></mat-slide-toggle></p></td>
+            <td class="img-table"><img mat-card-sm-image src="{{ product.image }}" ></td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.amount }}</td>
+            <td><mat-chip>{{product.status}}</mat-chip>
+            <td>
+              <button mat-icon-button class="edit-button" (click)="onEdit(product)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="onDelete(product)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        }
+      }
+      @empty {
+        @defer (on immediate) {
+          <app-no-items></app-no-items>
+        }
       }
     </tbody>
   </table>

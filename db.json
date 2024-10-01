@@ -1,39 +1,12 @@
 {
   "products": [
     {
+      "id": "4f28",
       "image": "",
-      "title": "Vestido",
-      "category": "Roupa",
-      "amount": 4,
-      "status": "Não Comprado",
-      "id": "5937"
-    },
-    {
-      "id": "6373",
-      "image": "",
-      "title": "melancia",
-      "category": "Frutas",
-      "amount": 7,
-      "status": "Não Comprado",
-      "icon": "❓"
-    },
-    {
-      "id": "5487",
-      "image": "https://cdn.leonardo.ai/users/e8eff8bb-3849-4d38-830d-dafa87ae0552/generations/12e350a6-97ae-405f-bb8d-636cec5a49e2/AlbedoBase_XL_High_quality_game_character_illustration_chibi_c_2.jpg?w=512",
-      "title": "Vestido",
-      "category": "Roupa",
-      "amount": 3,
-      "status": "Não Comprado",
-      "icon": "⭐"
-    },
-    {
-      "id": "d802",
-      "image": "",
-      "title": "Sapato",
-      "category": "Roupa",
-      "amount": 1,
-      "status": "Não Comprado",
-      "icon": "🍉"
+      "title": "",
+      "category": "",
+      "amount": 0,
+      "status": "Não Comprado"
     }
   ]
 }
