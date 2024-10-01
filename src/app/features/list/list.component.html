@@ -14,6 +14,12 @@
   </div>
 </mat-card>
 
+<div class="category-cards">
+@for (product of products; track product.id) {
+  <app-category-cards [product]="product"></app-category-cards>
+}
+</div>
+
 @for (product of products; track product.id) {
   <app-card [product]="product"></app-card>
 }
