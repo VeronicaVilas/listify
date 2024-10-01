@@ -19,6 +19,15 @@
         <input type="text" matInput formControlName="category" placeholder="Ex. Mercado">
       </mat-form-field>
       <mat-form-field appearance="outline">
+        <mat-label>Icones</mat-label>
+        <mat-select formControlName="icon">
+          <mat-option value="❤️">❤️</mat-option>
+          <mat-option value="⭐">⭐</mat-option>
+          <mat-option value="🍉">🍉</mat-option>
+          <mat-option value="🎁">🎁</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Quantidade</mat-label>
         <input type="number" matInput formControlName="amount" placeholder="0">
       </mat-form-field>
