@@ -18,10 +18,13 @@
 
 <div class="container-filter">
   <div class="filter-button">
-    <button mat-stroked-button class="purchased-button">
+    <button mat-stroked-button class="all-button" (click)="showAllProducts()">
+      <mat-icon>list</mat-icon> Todos
+    </button>
+    <button mat-stroked-button class="purchased-button" (click)="filterPurchased()">
       <mat-icon>check_circle</mat-icon> Comprados
     </button>
-    <button mat-stroked-button class="not-purchased-button">
+    <button mat-stroked-button class="not-purchased-button" (click)="filterNotPurchased()">
       <mat-icon>cancel</mat-icon> Não Comprados
     </button>
   </div>
@@ -45,7 +48,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (product of products; track product.id) {
+    @for (product of filteredProducts; track product.id) {
       @defer (on immediate) {
         <tr [ngClass]="{'disabled-row': product.disabled}">
           <td>

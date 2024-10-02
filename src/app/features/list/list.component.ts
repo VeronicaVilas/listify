@@ -34,12 +34,14 @@ export class ListComponent {
   productsService = inject(ProductsService);
   readonly dialog = inject(MatDialog);
   confirmationDialogService = inject(ConfirmationDialogService);
+  filteredProducts: Product[] = [];
 
   router = inject(Router)
 
   ngOnInit() {
     this.productsService.getAll().subscribe((products) => {
-      this.products = products.map(product => ({ ...product, disabled: false }));
+      this.products = products;
+      this.showAllProducts();
     });
   }
 
@@ -75,5 +77,17 @@ export class ListComponent {
     if (product.status === 'não comprado') {
       product.status = 'comprado'; // Atualiza o status
     }
+  }
+
+  showAllProducts() {
+    this.filteredProducts = this.products; // Mostra todos os produtos
+  }
+
+  filterPurchased() {
+    this.filteredProducts = this.products.filter(product => product.disabled); // Filtra produtos comprados
+  }
+
+  filterNotPurchased() {
+    this.filteredProducts = this.products.filter(product => !product.disabled); // Filtra produtos não comprados
   }
 }
