@@ -158,15 +158,29 @@
   border-radius: 50%;
 }
 
-.table-button .table-purchased-button {
+.table-button .table-not-purchased-button {
   color: #F2F2F2;
   font-weight: bold;
 }
 
-.table-purchased-button {
+.table-not-purchased-button {
   background-color: #960323;
 }
 
 .edit-button {
   color: #2C2C2C;
 }
+
+.disabled-row {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.table-button .table-purchased-button {
+  color: #2C2C2C;
+}
+
+.table-purchased-button {
+  background-color: #359143;
+}
+

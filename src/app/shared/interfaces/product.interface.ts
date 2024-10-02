@@ -5,4 +5,5 @@ export interface Product {
   category: string,
   amount: number,
   status: string,
+  disabled?: boolean;
 }

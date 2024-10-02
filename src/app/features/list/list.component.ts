@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject, model} from '@angular/core';
 import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/interfaces/product.interface';
 import { Router, RouterLink } from '@angular/router';
@@ -18,11 +18,13 @@ import { NoItemsComponent } from './components/no-items/no-items.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, CategoryCardsComponent, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule, MatFormFieldModule, MatInputModule, MatCheckboxModule],
+  imports: [RouterLink, CategoryCardsComponent, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, FormsModule, CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
@@ -33,12 +35,11 @@ export class ListComponent {
   readonly dialog = inject(MatDialog);
   confirmationDialogService = inject(ConfirmationDialogService);
 
-
   router = inject(Router)
 
   ngOnInit() {
     this.productsService.getAll().subscribe((products) => {
-      this.products = products;
+      this.products = products.map(product => ({ ...product, disabled: false }));
     });
   }
 
@@ -64,5 +65,15 @@ export class ListComponent {
           });
         });
     });
+  }
+
+  toggleDisable(product: Product): void {
+    product.disabled = !product.disabled;
+  }
+
+  toggleStatus(product: Product): void {
+    if (product.status === 'não comprado') {
+      product.status = 'comprado'; // Atualiza o status
+    }
   }
 }
