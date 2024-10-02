@@ -83,7 +83,9 @@
     }
     @empty {
       @defer (on immediate) {
-        <app-no-items></app-no-items>
+        <td colspan="7" class="no-items">
+          <app-no-items></app-no-items>
+        </td>
       }
     }
   </tbody>
