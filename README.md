@@ -50,7 +50,7 @@ npm install
 4. Rodar a aplicação localmente:
 
 ```bash
-ng serve
+npm start
 ```
 
 
