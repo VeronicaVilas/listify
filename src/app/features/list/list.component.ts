@@ -1,9 +1,9 @@
-import { Component, EventEmitter, inject, input, Output } from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/interfaces/product.interface';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CreateComponent } from '../create/create.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,11 +15,14 @@ import { EditComponent } from '../edit/edit.component';
 import { filter } from 'rxjs';
 import { ConfirmationDialogService } from '../../shared/services/confirmation-dialog.service';
 import { NoItemsComponent } from './components/no-items/no-items.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, CategoryCardsComponent, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule],
+  imports: [RouterLink, CategoryCardsComponent, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule, MatFormFieldModule, MatInputModule, MatCheckboxModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })

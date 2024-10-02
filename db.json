@@ -15,6 +15,14 @@
       "category": "Eletrônicos",
       "amount": 1,
       "status": "Não Comprado"
+    },
+    {
+      "id": "71eb",
+      "image": "https://cdn.leonardo.ai/users/e8eff8bb-3849-4d38-830d-dafa87ae0552/generations/6c60099f-f7c1-4551-9d27-1e20886e2771/AlbedoBase_XL_High_quality_game_character_illustration_masterp_1.jpg?w=512",
+      "title": "Compras",
+      "category": "Vestuário",
+      "amount": 3,
+      "status": "Não Comprado"
     }
   ]
 }

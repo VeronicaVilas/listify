@@ -14,60 +14,65 @@
   </div>
 </mat-card>
 
-<div class="category-cards">
-@for (product of products; track product.id) {
-  <app-category-cards [product]="product"></app-category-cards>
-}
+<h1 class="heading"> Sua <span>lista</span> está logo abaixo!</h1>
+
+<div class="container-filter">
+  <div class="filter-button">
+    <button mat-stroked-button class="purchased-button">
+      <mat-icon>check_circle</mat-icon> Comprados
+    </button>
+    <button mat-stroked-button class="not-purchased-button">
+      <mat-icon>cancel</mat-icon> Não Comprados
+    </button>
+  </div>
+  <mat-form-field appearance="outline" class="search-input">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput placeholder="Pesquise o nome do item aqui ....">
+  </mat-form-field>
 </div>
 
-<h6 class="list-title">Confira os produtos que você adicionou à sua lista!</h6>
 
-<div class="status-button">
-  <button mat-flat-button class="purchased-button">Comprados</button>
-  <button mat-flat-button color="warn" class="button-nao-comprados">Não Comprados</button>
-</div>
-
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Imagem</th>
-        <th>Nome</th>
-        <th>Categoria</th>
-        <th>Quantidade</th>
-        <th>Status</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (product of products; track product.id) {
-        @defer (on immediate) {
-          <tr>
-            <td><p><mat-slide-toggle></mat-slide-toggle></p></td>
-            <td class="img-table"><img mat-card-sm-image src="{{ product.image }}" ></td>
-            <td>{{ product.title }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.amount }}</td>
-            <td><mat-chip>{{product.status}}</mat-chip>
-            <td>
-              <button mat-icon-button class="edit-button" (click)="onEdit(product)">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button color="warn" (click)="onDelete(product)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-          </tr>
-        }
+<table class="table bordered-table">
+  <thead>
+    <tr>
+      <th><mat-checkbox class="custom-checkbox"></mat-checkbox></th>
+      <th>Imagem</th>
+      <th>Nome</th>
+      <th>Categoria</th>
+      <th>Quantidade</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (product of products; track product.id) {
+      @defer (on immediate) {
+        <tr>
+          <td><mat-checkbox class="example-margin"></mat-checkbox></td>
+          <td class="img-table"><img mat-card-sm-image src="{{ product.image }}" ></td>
+          <td><strong>{{ product.title }}</strong></td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.amount }}</td>
+          <td class="table-button">
+            <button mat-stroked-button class="table-purchased-button"> {{product.status}} </button>
+          <td>
+            <button mat-icon-button class="edit-button" (click)="onEdit(product)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="onDelete(product)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
       }
-      @empty {
-        @defer (on immediate) {
-          <app-no-items></app-no-items>
-        }
+    }
+    @empty {
+      @defer (on immediate) {
+        <app-no-items></app-no-items>
       }
-    </tbody>
-  </table>
+    }
+  </tbody>
+</table>
 
 
 
