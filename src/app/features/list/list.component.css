@@ -103,6 +103,10 @@
   margin-left: 20px;
 }
 
+.container-filter .all-button {
+  color: #2C2C2C;
+}
+
 .container-filter .purchased-button {
   color: #2C2C2C;
 }

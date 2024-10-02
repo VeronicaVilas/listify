@@ -35,7 +35,7 @@ export class ListComponent {
   readonly dialog = inject(MatDialog);
   confirmationDialogService = inject(ConfirmationDialogService);
   filteredProducts: Product[] = [];
-
+  searchTerm: string = '';
   router = inject(Router)
 
   ngOnInit() {
@@ -89,5 +89,12 @@ export class ListComponent {
 
   filterNotPurchased() {
     this.filteredProducts = this.products.filter(product => !product.disabled); // Filtra produtos não comprados
+  }
+
+  searchProducts() {
+    // Filtra os produtos com base no termo de pesquisa
+    this.filteredProducts = this.products.filter(product =>
+      product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 }

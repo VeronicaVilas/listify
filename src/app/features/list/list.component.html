@@ -30,7 +30,7 @@
   </div>
   <mat-form-field appearance="outline" class="search-input">
     <mat-icon matPrefix>search</mat-icon>
-    <input matInput placeholder="Pesquise o nome do item aqui ....">
+    <input matInput placeholder="Pesquise o nome do item aqui ...." [(ngModel)]="searchTerm" (input)="searchProducts()">
   </mat-form-field>
 </div>
 
