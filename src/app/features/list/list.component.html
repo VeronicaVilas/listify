@@ -34,62 +34,60 @@
   </mat-form-field>
 </div>
 
-
-<table class="table bordered-table">
-  <thead>
-    <tr>
-      <th><mat-checkbox class="custom-checkbox" [disabled]="true"></mat-checkbox></th>
-      <th>Imagem</th>
-      <th>Nome</th>
-      <th>Categoria</th>
-      <th>Quantidade</th>
-      <th>Status</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (product of filteredProducts; track product.id) {
-      @defer (on immediate) {
-        <tr [ngClass]="{'disabled-row': product.disabled}">
-          <td>
-            <mat-checkbox
-              class="example-margin"
-              (change)="toggleDisable(product)"
-            >
-            </mat-checkbox>
-          </td>
-          <td class="img-table"><img mat-card-sm-image src="{{ product.image }}" ></td>
-          <td><strong>{{ product.title }}</strong></td>
-          <td>{{ product.category }}</td>
-          <td>{{ product.amount }}</td>
-          <td class="table-button">
-            <button
-              mat-stroked-button
-              class="table-not-purchased-button"
-              [ngClass]="{'table-purchased-button': product.disabled}"
-              [disabled]="product.disabled">
-              {{ product.disabled ? 'comprado' : product.status }}
-            </button>
-          <td>
-            <button mat-icon-button class="edit-button" (click)="onEdit(product)" [disabled]="product.disabled">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="onDelete(product)" [disabled]="product.disabled">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-        </tr>
+<div id="table-container">
+  <table class="table bordered-table">
+    <thead>
+      <tr>
+        <th><mat-checkbox class="custom-checkbox" [disabled]="true"></mat-checkbox></th>
+        <th>Imagem</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Quantidade</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of filteredProducts; track product.id) {
+        @defer (on immediate) {
+          <tr [ngClass]="{'disabled-row': product.disabled}">
+            <td>
+              <mat-checkbox
+                class="example-margin"
+                (change)="toggleDisable(product)"
+              >
+              </mat-checkbox>
+            </td>
+            <td class="img-table"><img mat-card-sm-image src="{{ product.image }}" ></td>
+            <td><strong>{{ product.title }}</strong></td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.amount }}</td>
+            <td class="table-button">
+              <button
+                mat-stroked-button
+                class="table-not-purchased-button"
+                [ngClass]="{'table-purchased-button': product.disabled}"
+                [disabled]="product.disabled">
+                {{ product.disabled ? 'comprado' : product.status }}
+              </button>
+            <td>
+              <button mat-icon-button class="edit-button" (click)="onEdit(product)" [disabled]="product.disabled">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="onDelete(product)" [disabled]="product.disabled">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        }
       }
-    }
-    @empty {
-      @defer (on immediate) {
-        <td colspan="7" class="no-items">
-          <app-no-items></app-no-items>
-        </td>
+      @empty {
+        @defer (on immediate) {
+          <td colspan="7" class="no-items">
+            <app-no-items></app-no-items>
+          </td>
+        }
       }
-    }
-  </tbody>
-</table>
-
-
-
+    </tbody>
+  </table>
+</div>

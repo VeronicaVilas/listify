@@ -4,7 +4,7 @@
   padding: 50px;
   border-radius: 20px;
   margin: 2rem 0.8rem 0rem;
-  width: 100%;
+  width: 98%;
   max-width: 1315px;
   height: 350px;
   display: flex;
@@ -43,10 +43,12 @@
 }
 
 .banner-image img {
-  max-width: 120%;
+  width: 750px;
   height: auto;
   object-fit: contain;
+  margin-right: 0;
 }
+
 
 .add-button {
   background-color: #F26671;
@@ -186,5 +188,95 @@
 
 .table-purchased-button {
   background-color: #359143;
+}
+
+div#table-container {
+  overflow-x: auto;
+}
+
+@media (max-width:1145px) {
+  .banner-image img {
+    margin-right: -2.5rem;
+  }
+}
+
+@media (max-width:1100px) {
+  .banner-image img {
+    margin-right: -3rem;
+  }
+}
+
+@media (max-width:1040px) {
+  .banner-image img {
+    margin-right: -6rem;
+  }
+}
+
+@media (max-width:955px) {
+  .banner-image img {
+    margin-right: -10rem;
+  }
+}
+
+@media (max-width:850px) {
+  .banner-image img {
+    margin-right: -15rem;
+  }
+}
+
+@media (max-width:710px) {
+  .banner-text h3 {
+    font-size: 2.0rem;
+  }
+
+  .banner-text p {
+    font-size: 0.8rem;
+  }
+
+  .banner-image img {
+    margin-right: -16rem;
+  }
+}
+
+@media (max-width:600px) {
+
+  .banner-text {
+    width: 300%;
+  }
+
+  .banner-image img {
+    display: none;
+  }
+  .add-button {
+    margin-top: 0rem;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .heading span {
+    padding: 0.1rem 2rem;
+  }
+
+  .filter-button {
+    width: 95%;
+    margin-left: 0px;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+
+  .container-filter mat-icon {
+    display: none;
+  }
+
+  .search-input {
+    display: none;
+  }
+
+  .table {
+    margin-top: 2rem;
+  }
+
 }
 
