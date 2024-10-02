@@ -14,9 +14,15 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <mat-form-field>
+      <mat-form-field class="select">
         <mat-label>Categoria</mat-label>
-        <input type="text" matInput formControlName="category" placeholder="Ex. Mercado">
+        <mat-select formControlName="category">
+          <mat-option value="Alimentos e Bebidas">Alimentos e Bebidas</mat-option>
+          <mat-option value="Eletrônicos">Eletrônicos</mat-option>
+          <mat-option value="Vestuário">Vestuário</mat-option>
+          <mat-option value="Beleza e Cuidados Pessoais">Beleza e Cuidados Pessoais</mat-option>
+          <mat-option value="Outros">Outros</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Quantidade</mat-label>

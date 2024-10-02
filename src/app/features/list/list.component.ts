@@ -66,6 +66,9 @@ export class ListComponent {
             this.products = products;
           });
         });
+        setTimeout(() => {
+          window.location.reload();
+        });
     });
   }
 
@@ -75,24 +78,23 @@ export class ListComponent {
 
   toggleStatus(product: Product): void {
     if (product.status === 'não comprado') {
-      product.status = 'comprado'; // Atualiza o status
+      product.status = 'comprado';
     }
   }
 
   showAllProducts() {
-    this.filteredProducts = this.products; // Mostra todos os produtos
+    this.filteredProducts = this.products;
   }
 
   filterPurchased() {
-    this.filteredProducts = this.products.filter(product => product.disabled); // Filtra produtos comprados
+    this.filteredProducts = this.products.filter(product => product.disabled);
   }
 
   filterNotPurchased() {
-    this.filteredProducts = this.products.filter(product => !product.disabled); // Filtra produtos não comprados
+    this.filteredProducts = this.products.filter(product => !product.disabled);
   }
 
   searchProducts() {
-    // Filtra os produtos com base no termo de pesquisa
     this.filteredProducts = this.products.filter(product =>
       product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
