@@ -47,7 +47,13 @@ cd listify
 npm install
 ```
 
-4. Rodar a aplicação localmente:
+4. Rode o banco de dados localmente:
+
+```bash
+npx json-server db.json 
+```
+
+4. Rode a aplicação localmente:
 
 ```bash
 npm start
