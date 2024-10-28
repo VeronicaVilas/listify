@@ -53,8 +53,7 @@
           <tr [ngClass]="{'disabled-row': product.disabled}">
             <td>
               <mat-checkbox
-                class="example-margin"
-                (change)="toggleDisable(product)"
+                (change)="toggleDisableAndIncluded(product)"
               >
               </mat-checkbox>
             </td>
@@ -67,8 +66,9 @@
                 mat-stroked-button
                 class="table-not-purchased-button"
                 [ngClass]="{'table-purchased-button': product.disabled}"
-                [disabled]="product.disabled">
-                {{ product.disabled ? 'comprado' : product.status }}
+                [disabled]="product.disabled"
+              >
+                {{ product.disabled ? 'Comprado' : 'Não Comprado' }}
               </button>
             <td>
               <button mat-icon-button class="edit-button" (click)="onEdit(product)" [disabled]="product.disabled">

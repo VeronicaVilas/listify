@@ -4,6 +4,6 @@ export interface Product {
   title: string,
   category: string,
   amount: number,
-  status: string,
+  included: boolean,
   disabled?: boolean;
 }

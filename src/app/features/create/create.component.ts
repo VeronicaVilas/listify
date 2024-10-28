@@ -39,7 +39,7 @@ export class CreateComponent {
       nonNullable: true,
       validators: [Validators.required, Validators.min(1)],
     }),
-    status: new FormControl<string>("Não Comprado", {
+    included: new FormControl<boolean>(false, {
       nonNullable: true,
     }),
   });
@@ -51,7 +51,7 @@ export class CreateComponent {
         title: this.form.controls.title.value,
         category: this.form.controls.category.value,
         amount: this.form.controls.amount.value,
-        status: this.form.controls.status.value,
+        included: this.form.controls.included.value
       }).subscribe(() => {
         this.matSnackBar.open('Produto criado com sucesso!', 'Ok', {
           duration: 3000,

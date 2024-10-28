@@ -7,7 +7,6 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CreateComponent } from '../create/create.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { CategoryCardsComponent } from './components/category-cards/category-cards.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -24,7 +23,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, CategoryCardsComponent, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, FormsModule, CommonModule],
+  imports: [RouterLink, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, FormsModule, CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
@@ -72,15 +71,14 @@ export class ListComponent {
     });
   }
 
-  toggleDisable(product: Product): void {
+  toggleDisableAndIncluded(product: Product): void {
     product.disabled = !product.disabled;
+
+    product.included = product.disabled;
+    this.productsService.updateStatus(product.id, product.included).subscribe();
   }
 
-  toggleStatus(product: Product): void {
-    if (product.status === 'não comprado') {
-      product.status = 'comprado';
-    }
-  }
+
 
   showAllProducts() {
     this.filteredProducts = this.products;
