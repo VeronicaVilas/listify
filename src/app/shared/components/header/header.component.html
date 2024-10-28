@@ -2,4 +2,26 @@
   <span class="logo">
     <mat-icon>library_add_check</mat-icon> Listify
   </span>
+  <div>
+    <div class="profile">
+      @if(profile){
+        <img class="image-profile" [src]="profile?.picture" alt="{{ profile?.name }}" />
+        <div class="info-profile">
+          <p class="name-profile">
+            <strong>Nome:</strong>
+            {{ profile?.name }}
+          </p>
+          <p class="email-profile">
+            <strong>Email:</strong>
+            {{ profile.email }}
+          </p>
+        </div>
+      }
+      @if(isAuthenticated$ | async){
+        <button mat-raised-button (click)="logout()">Sair</button>
+      }@else {
+        <button mat-raised-button (click)="login()">Entrar</button>
+      }
+    </div>
+  </div>
 </mat-toolbar>
