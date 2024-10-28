@@ -3,6 +3,7 @@ import { ListComponent } from './features/list/list.component';
 import { CreateComponent } from './features/create/create.component';
 import { inject } from '@angular/core';
 import { ProductsService } from './shared/services/products.service';
+import { NotFoundComponent } from './features/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,9 @@ export const routes: Routes = [
       import('./features/edit/edit.component').then(
         (m) => m.EditComponent
       ),
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
