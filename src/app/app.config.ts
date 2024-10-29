@@ -17,7 +17,11 @@ export const appConfig: ApplicationConfig = {
       clientId: 'e4PNaOqUR8kAHaUBQTQqQMkBzBXjziL3',
       authorizationParams: {
         redirect_uri: window.location.origin,
+        audience: 'https://dev-eeipn5gto1zg5v42.us.auth0.com/api/v2/',
+        scope: 'openid profile email offline_access',
       },
+      useRefreshTokens: true,
+      cacheLocation: 'localstorage',
     }),
   ]
 };
