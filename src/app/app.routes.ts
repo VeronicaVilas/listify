@@ -1,4 +1,5 @@
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
+import { featuresGuard } from './guards/features.guard';
 import { ListComponent } from './features/list/list.component';
 import { CreateComponent } from './features/create/create.component';
 import { inject } from '@angular/core';
@@ -8,7 +9,8 @@ import { NotFoundComponent } from './features/not-found/not-found.component';
 export const routes: Routes = [
   {
     path: '',
-    component: ListComponent
+    component: ListComponent,
+    canActivate: [featuresGuard]
   },
   {
     path: 'create-product',
