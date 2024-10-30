@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #2C2C2C;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: "Passion One", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #F2F2F2;
+}
+
+button.login-header-button {
+  color: #F26671;
+}
+
+.hero {
+  background-color: #2C2C2C;
+  height: 90vh;
+  text-align: center;
+  padding-top: 9rem;
+}
+
+.hero .home-container {
+  position: relative;
+}
+
+.hero h1 {
+  color: #F2F2F2;
+  font-family: "Passion One", sans-serif;
+  letter-spacing: 3.75px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.hero-social-icon {
+  display: flex;
+  position: absolute;
+  left: 100px;
+  top: 40px;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.hero-social-icon mat-icon {
+  margin-bottom: 20px;
+  margin-left: 45px;
+}
+
+mat-icon.custom-icon {
+  color: #F26671;
+}
+
+.hero-social-icon hr {
+  display: block;
+  margin-top: 50px;
+  opacity: 1;
+  color: #F2F2F2;
+  width: 110px;
+  rotate: 90deg;
+}
+
+.center-data  {
+  color: #F2F2F2;
+  padding: 0px 250px;
+}
+
+.center-data h6 strong {
+  color: #F26671;
+}
+
+.home-button button{
+  margin-right: 16px;
+  color: #F26671;
+}
+
+button.login-home-button {
+  padding: 1.5rem 2rem;
+}
