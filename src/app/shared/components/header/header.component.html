@@ -5,22 +5,25 @@
   <div>
     <div class="profile">
       @if(profile){
-        <img class="image-profile" [src]="profile?.picture" alt="{{ profile?.name }}" />
-        <div class="info-profile">
-          <p class="name-profile">
-            <strong>Nome:</strong>
-            {{ profile?.name }}
-          </p>
-          <p class="email-profile">
-            <strong>Email:</strong>
-            {{ profile.email }}
-          </p>
-        </div>
-      }
-      @if(isAuthenticated$ | async){
-        <button mat-raised-button (click)="logout()">Sair</button>
-      }@else {
-        <button mat-raised-button (click)="login()">Entrar</button>
+        <button mat-button [matMenuTriggerFor]="afterMenu">
+          <span style="display: flex; align-items: center;">
+            <img class="image-profile" [src]="profile?.picture" alt="{{ profile?.name }}" />
+            <div class="info-profile">
+              <p class="name-profile">
+                <strong>Nome:</strong>
+                {{ profile?.name }}
+              </p>
+              <p class="email-profile">
+                <strong>Email:</strong>
+                {{ profile.email }}
+              </p>
+            </div>
+            <mat-icon class="icon-profile">arrow_drop_down</mat-icon>
+          </span>
+        </button>
+        <mat-menu #afterMenu="matMenu" xPosition="before">
+          <button mat-menu-item (click)="logout()">Sair</button>
+        </mat-menu>
       }
     </div>
   </div>
