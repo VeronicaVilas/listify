@@ -5,12 +5,17 @@ import { CreateComponent } from './features/create/create.component';
 import { inject } from '@angular/core';
 import { ProductsService } from './shared/services/products.service';
 import { NotFoundComponent } from './features/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'shopping-list',
     component: ListComponent,
     canActivate: [featuresGuard]
+  },
+  {
+    path: '',
+    component: HomeComponent,
   },
   {
     path: 'create-product',
