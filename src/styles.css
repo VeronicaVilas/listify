@@ -21,7 +21,6 @@ body {
   display: flex;
   width: 100%;
   justify-content: center;
-  background-color: red;
 }
 
 .content-container {
