@@ -2,13 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../interfaces/product.interface';
 import { ProductPayload } from '../interfaces/payload-product.interface';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+
   httpClient = inject(HttpClient);
   apiURL = '/api/products';
+
+  getUser(userId: string) {
+    return this.httpClient.get<Product[]>(`${this.apiURL}?userId=${userId}`);
+  }
 
   getAll() {
     return this.httpClient.get<Product[]>(`${this.apiURL}`);
