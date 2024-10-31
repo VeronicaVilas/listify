@@ -51,7 +51,7 @@ export class EditComponent {
       title: this.form.controls['title'].value,
       category: this.form.controls['category'].value,
       amount: this.form.controls['amount'].value,
-      included: this.form.controls['included'].value,
+      included: this.form.controls['included'].value
     })
     .subscribe(() => {
       this.matSnackBar.open('Produto editado com sucesso!', 'Ok', {
