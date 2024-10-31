@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAuth0({
       domain: 'dev-eeipn5gto1zg5v42.us.auth0.com',
-      clientId: 'e4PNaOqUR8kAHaUBQTQqQMkBzBXjziL3',
+      clientId: 'IxyEa8RpVOkmuDbqK6fuMxaxHvtHjWDl',
       authorizationParams: {
         redirect_uri: window.location.origin,
         audience: 'https://dev-eeipn5gto1zg5v42.us.auth0.com/api/v2/',
