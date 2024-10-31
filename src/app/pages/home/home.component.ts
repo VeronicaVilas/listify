@@ -2,16 +2,18 @@ import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { Observable } from 'rxjs';
+import { LearnMoreComponent } from './learn-more/learn-more.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatToolbarModule],
+  imports: [MatIconModule, MatButtonModule, MatToolbarModule,  MatDialogModule, LearnMoreComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -21,6 +23,7 @@ export class HomeComponent implements OnInit {
   profile!: User | null | undefined;
   isAuthenticated$!: Observable<boolean>;
   userId!: string;
+  readonly dialog = inject(MatDialog);
 
   constructor(
     private auth: AuthService,
@@ -112,5 +115,9 @@ export class HomeComponent implements OnInit {
     this.auth.loginWithRedirect({
       appState: { target: '/shopping-list' }
     });
+  }
+
+  openDialog() {
+    this.dialog.open(LearnMoreComponent);
   }
 }

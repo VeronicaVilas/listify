@@ -21,10 +21,14 @@ button.login-header-button {
 }
 
 .hero {
-  background-color: #2C2C2C;
-  height: 90vh;
+  background-image: url(https://cdn.leonardo.ai/users/e8eff8bb-3849-4d38-830d-dafa87ae0552/generations/ecc207ed-2e5f-4864-817b-1c7ffa12a0f5/AlbedoBase_XL_High_quality_game_character_illustration_chibi_g_0.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   text-align: center;
   padding-top: 9rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
 }
 
 .hero .home-container {
@@ -71,7 +75,11 @@ mat-icon.custom-icon {
   padding: 0px 250px;
 }
 
-.center-data h6 strong {
+.center-data p {
+  font-size: 1.6rem;
+}
+
+.center-data p strong {
   color: #F26671;
 }
 
@@ -82,4 +90,37 @@ mat-icon.custom-icon {
 
 button.login-home-button {
   padding: 1.5rem 2rem;
+}
+
+@media (max-width:900px) {
+  .center-data p{
+    font-size: 1.3rem;
+  }
+}
+
+
+@media (max-width:770px) {
+  .center-data  {
+    padding: 0px 150px;
+  }
+
+  .hero-social-icon {
+    left: 40px;
+  }
+}
+
+
+@media (max-width:560px) {
+  .center-data  {
+    padding: 0px 100px;
+  }
+
+  .center-data p{
+    font-size: 1rem;
+  }
+
+  .hero-social-icon {
+    left: 0;
+  }
+
 }
