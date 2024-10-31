@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router } from '@angular/router';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { Observable } from 'rxjs';
 
@@ -18,17 +17,21 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  matSnackBar = inject(MatSnackBar)
+  matSnackBar = inject(MatSnackBar);
   profile!: User | null | undefined;
   isAuthenticated$!: Observable<boolean>;
+  userId!: string;
 
-  constructor(private auth: AuthService, private http: HttpClient, @Inject(DOCUMENT) private document: Document, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private http: HttpClient,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   ngOnInit(): void {
     this.isAuthenticated$ = this.auth.isAuthenticated$;
     this.auth.user$.subscribe((profile) => {
       this.profile = profile;
-
       if (profile) {
         this.saveUser(profile);
         this.getToken();
@@ -46,15 +49,15 @@ export class HomeComponent implements OnInit {
     this.http.get<any[]>(`http://localhost:3000/users?email=${userData.email}`).subscribe({
       next: (users) => {
         if (users.length === 0) {
-          this.http.post('http://localhost:3000/users', userData).subscribe({
-            next: () => {
-              this.matSnackBar.open('Login realizado com sucesso!', 'Fechar', {
-                duration: 5000,
-                horizontalPosition: 'center',
-                verticalPosition: 'top',
+          this.http.post<any>('http://localhost:3000/users', userData).subscribe({
+            next: (newUser) => {
+              this.userId = newUser.id;
+              localStorage.setItem('userId', this.userId);
+              setTimeout(() => {
+                window.location.reload();
               });
             },
-            error: (err) => {
+            error: () => {
               this.matSnackBar.open('Erro ao realizar login. Por favor, faça login novamente!', 'Fechar', {
                 duration: 5000,
                 horizontalPosition: 'center',
@@ -63,15 +66,15 @@ export class HomeComponent implements OnInit {
             },
           });
         } else {
-          this.matSnackBar.open('Login realizado com sucesso!', 'Fechar', {
-            duration: 5000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
+          this.userId = users[0].id;
+          localStorage.setItem('userId', this.userId);
+          setTimeout(() => {
+            window.location.reload();
           });
         }
       },
-      error: (err) => {
-        this.matSnackBar.open('Erro ao verificaro o usuário. Por favor, faça login novamente!', 'Fechar', {
+      error: () => {
+        this.matSnackBar.open('Erro ao verificar o usuário. Por favor, faça login novamente!', 'Fechar', {
           duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'top',
@@ -79,7 +82,6 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-
 
   getToken() {
     this.auth.getAccessTokenSilently().subscribe({
@@ -94,9 +96,9 @@ export class HomeComponent implements OnInit {
         });
         if (err.error === 'login_required' || err.error === 'consent_required') {
           const snackBarRef = this.matSnackBar.open('Sessão expirada! Por favor, faça login novamente para acessar.', 'Login', {
-              duration: 5000,
-              horizontalPosition: 'center',
-              verticalPosition: 'top'
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top'
           });
           snackBarRef.onAction().subscribe(() => {
             this.login();
