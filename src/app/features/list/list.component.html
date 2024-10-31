@@ -76,7 +76,7 @@
               <button mat-icon-button class="edit-button" (click)="onEdit(product)" [disabled]="product.disabled">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button color="warn" [disabled]="product.disabled">
+              <button mat-icon-button color="warn" (click)="onDelete(product)" [disabled]="product.disabled">
                 <mat-icon>delete</mat-icon>
               </button>
             </td>
