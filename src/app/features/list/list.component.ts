@@ -1,4 +1,4 @@
-import { Component, inject, model} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductsService } from '../../shared/services/products.service';
 import { Product } from '../../shared/interfaces/product.interface';
 import { Router, RouterLink } from '@angular/router';
@@ -19,11 +19,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterLink, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, FormsModule, CommonModule],
+  imports: [RouterLink, HeaderComponent, NoItemsComponent, MatButtonModule, MatDialogModule, MatCardModule, MatIconModule, MatTableModule, MatChipsModule, MatSlideToggleModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, FormsModule, CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
@@ -35,17 +36,26 @@ export class ListComponent {
   confirmationDialogService = inject(ConfirmationDialogService);
   filteredProducts: Product[] = [];
   searchTerm: string = '';
-  router = inject(Router)
+  router = inject(Router);
+  userId!: string;
 
   ngOnInit() {
-    this.productsService.getAll().subscribe((products) => {
+    this.userId = localStorage.getItem('userId') || '';
+    console.log("ID do usuário no ListComponent:", this.userId);
+    this.loadProducts(this.userId);
+  }
+
+  loadProducts(userId: string) {
+    this.productsService.getUser(userId).subscribe((products) => {
       this.products = products;
       this.showAllProducts();
     });
   }
 
   openCreateProduct() {
-    const dialogRef = this.dialog.open(CreateComponent);
+    this.dialog.open(CreateComponent, {
+      data: { userId: this.userId }
+    });
   }
 
   onEdit(product: Product) {
@@ -77,8 +87,6 @@ export class ListComponent {
     product.included = product.disabled;
     this.productsService.updateStatus(product.id, product.included).subscribe();
   }
-
-
 
   showAllProducts() {
     this.filteredProducts = this.products;
