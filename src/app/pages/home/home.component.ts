@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   isAuthenticated$!: Observable<boolean>;
   userId!: string;
   readonly dialog = inject(MatDialog);
+  private hasReloaded = false;
 
   constructor(
     private auth: AuthService,
@@ -56,9 +57,12 @@ export class HomeComponent implements OnInit {
             next: (newUser) => {
               this.userId = newUser.id;
               localStorage.setItem('userId', this.userId);
-              setTimeout(() => {
-                window.location.reload();
-              });
+              if (!this.hasReloaded) {
+                this.hasReloaded = true;
+                setTimeout(() => {
+                  window.location.reload();
+                });
+              }
             },
             error: () => {
               this.matSnackBar.open('Erro ao realizar login. Por favor, faça login novamente!', 'Fechar', {
@@ -71,9 +75,12 @@ export class HomeComponent implements OnInit {
         } else {
           this.userId = users[0].id;
           localStorage.setItem('userId', this.userId);
-          setTimeout(() => {
-            window.location.reload();
-          });
+          if (!this.hasReloaded) {
+            this.hasReloaded = true;
+            setTimeout(() => {
+              window.location.reload();
+            });
+          }
         }
       },
       error: () => {
