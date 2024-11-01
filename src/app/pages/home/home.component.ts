@@ -59,9 +59,10 @@ export class HomeComponent implements OnInit {
               localStorage.setItem('userId', this.userId);
               if (!this.hasReloaded) {
                 this.hasReloaded = true;
+                document.body.classList.add('fade-out');
                 setTimeout(() => {
                   window.location.reload();
-                });
+                }, 500);
               }
             },
             error: () => {
@@ -77,9 +78,10 @@ export class HomeComponent implements OnInit {
           localStorage.setItem('userId', this.userId);
           if (!this.hasReloaded) {
             this.hasReloaded = true;
+            document.body.classList.add('fade-out');
             setTimeout(() => {
               window.location.reload();
-            });
+            }, 500);
           }
         }
       },
