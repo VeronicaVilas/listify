@@ -57,13 +57,6 @@ export class HomeComponent implements OnInit {
             next: (newUser) => {
               this.userId = newUser.id;
               localStorage.setItem('userId', this.userId);
-              if (!this.hasReloaded) {
-                this.hasReloaded = true;
-                document.body.classList.add('fade-out');
-                setTimeout(() => {
-                  window.location.reload();
-                }, 500);
-              }
             },
             error: () => {
               this.matSnackBar.open('Erro ao realizar login. Por favor, faça login novamente!', 'Fechar', {
@@ -76,13 +69,6 @@ export class HomeComponent implements OnInit {
         } else {
           this.userId = users[0].id;
           localStorage.setItem('userId', this.userId);
-          if (!this.hasReloaded) {
-            this.hasReloaded = true;
-            document.body.classList.add('fade-out');
-            setTimeout(() => {
-              window.location.reload();
-            }, 500);
-          }
         }
       },
       error: () => {
