@@ -41,8 +41,12 @@ export class ListComponent {
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId') || '';
-    console.log("ID do usuário no ListComponent:", this.userId);
-    this.loadProducts(this.userId);
+    if (!this.userId) {
+        window.location.reload();
+    } else {
+        console.log("ID do usuário no ListComponent:", this.userId);
+        this.loadProducts(this.userId);
+    }
   }
 
   loadProducts(userId: string) {
