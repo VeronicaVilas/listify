@@ -107,6 +107,7 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
+    localStorage.removeItem('userId');
     this.auth.loginWithRedirect({
       appState: { target: '/shopping-list' }
     });
